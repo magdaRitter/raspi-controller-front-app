@@ -1,5 +1,31 @@
 <div>
-  <app-carousel [stations]="stations"></app-carousel>
-  <app-player></app-player>
+  <div id="radioStationsCarousel" class="carousel slide" data-interval="false">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#radioStationsCarousel" *ngFor="let station of stations; let i = index"
+        [attr.data-bs-slide-to]="i" [ngClass]="i == 0? 'active': ''" aria-current="true" [attr.aria-label]="'Slide-' + i"  (click)="updateActiveStation(station)">
+      </button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item" *ngFor="let station of stations; let i = index" [ngClass]="i == 0? 'active': ''">
+        <img src="{{station.imageUrl}}" class="d-block w-100 custom-img-carousel" alt="...">
+        <div class="carousel-caption">
+          <h5 class="fw-light">{{station.podcast}}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="text-center">
+        <button type="button" class="btn btn-outline-primary custom-btn" (click)="startRadio()">
+            <img [src]="startIcon" class="play-img">
+        </button>
+        <button type="button" class="btn btn-outline-primary custom-btn" (click)="stopRadio()">
+          <img [src]="stopIcon" class="play-img">
+      </button>
+    </div>
+    <div class="text-center">
+        <input type="range" class="form-range" #ref id="volumeRange" value="25" step="5" min="0" max="100" (change)="updateVolume(ref.value)">
+    </div>
+</div>
 </div>
   

@@ -3,18 +3,21 @@
         "id": 1,
         "name": "Radio Nowy Świat",
         "podcast": "Teraz na antenie...",
-        "imageUrl": "assets/stations/nowy-swiat.png"
+        "imageUrl": "assets/stations/nowy-swiat.png",
+        "streamUrl": "https://stream.nowyswiat.online/mp3"
     },
     {
         "id": 2,
         "name": "Radio 357",
         "podcast": "Teraz na antenie...",
-        "imageUrl": "assets/stations/357.png"
+        "imageUrl": "assets/stations/357.png",
+        "streamUrl": "https://stream.rcs.revma.com/an1ugyygzk8uv"
     },
     {
         "id": 3,
         "name": "Radio RMF FM",
         "podcast": "Teraz na antenie...",
-        "imageUrl": "assets/stations/rmf-fm.png"
+        "imageUrl": "assets/stations/rmf-fm.png",
+        "streamUrl": "http://www.rmfon.pl/n/rmffm.pls"
     }
 ]

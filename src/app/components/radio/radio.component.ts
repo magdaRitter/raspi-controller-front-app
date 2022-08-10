@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { IStation } from 'src/app/services/radio/station';
-import { StationsService } from 'src/app/services/radio/stations.service';
+import { RaspiService } from 'src/app/services/raspi/raspi.service';
+import { IStation } from 'src/app/services/stations/station';
+import { StationsService } from 'src/app/services/stations/stations.service';
 
 @Component({
   selector: 'app-radio',
@@ -9,16 +10,22 @@ import { StationsService } from 'src/app/services/radio/stations.service';
   styleUrls: ['./radio.component.css']
 })
 export class RadioComponent implements OnInit, OnDestroy {
+  startIcon = "assets/radio/play.png";
+  stopIcon = "assets/radio/pause.png";
   sub!: Subscription;
   errorMessage: string = "";
   stations: IStation[] = [];
+  activeStation!: IStation;
+  stopped = true;
+  volumeValue = 0;
 
-  constructor(private stationsService: StationsService) { }
+  constructor(private stationsService: StationsService, private raspiService: RaspiService) { }
 
   ngOnInit(): void {
     this.sub = this.stationsService.getStations().subscribe({
       next: stations => {
         this.stations = stations;
+        this.activeStation = stations[0]!;
       },
       error: err => this.errorMessage = err
     });
@@ -28,7 +35,20 @@ export class RadioComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
 
-  showClick(){
-    console.log("clicked")
+  updateActiveStation(station: IStation) {
+    this.activeStation = station;
+  }
+
+  startRadio() {
+    this.raspiService.startRadio(this.activeStation);
+  }
+
+  stopRadio() {
+    this.raspiService.stopRadio();
+  }
+
+  updateVolume(value: string){
+    this.volumeValue = Number(value);
+    this.raspiService.setVolume(this.volumeValue);
   }
 }

@@ -1,2 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~font-awesome/css/font-awesome.min.css";
+
+
+/* Set a background image by replacing the URL below */
+body {
+    background: url("assets/wallpaper.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+  }

@@ -1,1 +1,19 @@
-<p>system works!</p>
+<div class="text-center">
+    <div>
+        <img class="custom-img" style="vertical-align:middle" [src]="gandalfIcon" alt="...">
+        <h3 class="fw-light">Choose wisely, my friend</h3>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <button type="button" class="btn btn-outline-primary custom-btn" (click)="restartSystem()">
+        <img [src]="restartIcon" class="custom-img">
+        <h5 class="fw-light" style="color: black">Restart system</h5>
+    </button>
+</div>
+<div class="row">
+    <button type="button" class="btn btn-outline-primary custom-btn" (click)="shutdownSystem()">
+        <img [src]="shutdownIcon" class="custom-img">
+        <h5 class="fw-light" style="color: black">Shutdown system</h5>
+    </button>
+</div>

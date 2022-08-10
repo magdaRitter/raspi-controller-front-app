@@ -21,8 +21,8 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
     HttpClientModule,
     AppRoutingModule,
     RouterModule.forRoot([
-      {path: '', redirectTo: 'radio', pathMatch: 'full'},
-      {path: '**', redirectTo: 'radio', pathMatch: 'full'}
+      {path: '', redirectTo: 'doors', pathMatch: 'full'},
+      {path: '**', redirectTo: 'doors', pathMatch: 'full'}
     ]),
   ],
   providers: [],

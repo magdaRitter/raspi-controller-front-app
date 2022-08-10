@@ -1,0 +1,24 @@
+<div class="text-center">
+    <div>
+        <img class="custom-img" style="vertical-align:middle" [src]="gandalfIcon" alt="...">
+        <h3 class="fw-light">Choose wisely, my friend</h3>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <button type="button" class="btn btn-outline-primary custom-btn" (click)="requestGarage()">
+        <img [src]="garageIcon" class="custom-img">
+        <h5 class="fw-light" style="color: black">Open garage</h5>
+    </button>
+</div>
+<div class="row">
+    <button type="button" class="btn btn-outline-primary custom-btn" (click)="requestGate()">
+        <img [src]="gateIcon" class="custom-img">
+        <h5 class="fw-light" style="color: black">Open gate</h5>
+    </button>
+</div>
+<div class="row"> <button type="button" class="btn btn-outline-primary custom-btn" (click)="requestBoth()">
+        <img [src]="allIcon" class="custom-img">
+        <h5 class="fw-light" style="color: black">Open both</h5>
+    </button>
+</div>

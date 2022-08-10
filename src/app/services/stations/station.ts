@@ -3,4 +3,5 @@ export interface IStation {
     name: string;
     podcast: string;
     imageUrl: string;
+    streamUrl: string;
 }

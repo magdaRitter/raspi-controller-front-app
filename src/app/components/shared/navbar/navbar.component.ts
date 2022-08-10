@@ -6,12 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  appTitleLbl: string = "Radio Remote";
+  appTitleLbl: string = "Raspi Controller";
+  doorsLbl: string = "Doors";
   radioLbl: string = "Radio";
   alarmLbl: string = "Alarm";
   systemLbl: string = "System";
-  servicesLbl: string = "Services";
-  logoUrl: string = "assets/multimedia/waves.png";
+  logoUrl: string = "assets/raspi.png";
   
   constructor() { }
 
