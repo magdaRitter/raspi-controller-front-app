@@ -6,7 +6,7 @@ import { ServicesComponent } from '../components/services/services.component';
 
 @NgModule({
   declarations: [
-    ServicesComponent
+    ServicesComponent,
   ],
   imports: [
     CommonModule,

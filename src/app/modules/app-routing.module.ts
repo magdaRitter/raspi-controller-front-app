@@ -10,7 +10,7 @@ import { SystemModule } from './system.module';
     AlarmModule,
     RadioModule, 
     ServicesModule,
-    SystemModule
+    SystemModule,
   ]
 })
 export class AppRoutingModule { }

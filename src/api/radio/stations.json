@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "name": "Radio Nowy Świat",
+        "podcast": "Teraz na antenie...",
+        "imageUrl": "assets/stations/nowy-swiat.png"
+    },
+    {
+        "id": 2,
+        "name": "Radio 357",
+        "podcast": "Teraz na antenie...",
+        "imageUrl": "assets/stations/357.png"
+    },
+    {
+        "id": 3,
+        "name": "Radio RMF FM",
+        "podcast": "Teraz na antenie...",
+        "imageUrl": "assets/stations/rmf-fm.png"
+    }
+]

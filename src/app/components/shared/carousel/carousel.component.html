@@ -1,0 +1,23 @@
+<div id="radioStationsCarousel" class="carousel slide" data-interval="false">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#radioStationsCarousel" *ngFor="let station of stations; let i = index"
+      [attr.data-bs-slide-to]="i" [ngClass]="i == 0? 'active': ''" aria-current="true" [attr.aria-label]="'Slide-' + i">
+    </button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item" *ngFor="let station of stations; let i = index" [ngClass]="i == 0? 'active': ''">
+      <img src="{{station.imageUrl}}" class="d-block w-100 custom-img" alt="...">
+      <div class="carousel-caption">
+        <h5>{{station.podcast}}</h5>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#radioStationsCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#radioStationsCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

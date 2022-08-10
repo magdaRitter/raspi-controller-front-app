@@ -11,6 +11,7 @@ export class NavbarComponent implements OnInit {
   alarmLbl: string = "Alarm";
   systemLbl: string = "System";
   servicesLbl: string = "Services";
+  logoUrl: string = "assets/multimedia/waves.png";
   
   constructor() { }
 

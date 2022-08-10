@@ -4,9 +4,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './modules/app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { NavbarComponent } from './components/shared/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     BrowserModule,
     NgbModule,
     ReactiveFormsModule,
+    HttpClientModule,
     AppRoutingModule,
     RouterModule.forRoot([
       {path: '', redirectTo: 'radio', pathMatch: 'full'},

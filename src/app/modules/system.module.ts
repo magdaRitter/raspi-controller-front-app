@@ -6,7 +6,7 @@ import { SystemComponent } from '../components/system/system.component';
 
 @NgModule({
   declarations: [
-    SystemComponent
+    SystemComponent,
   ],
   imports: [
     CommonModule,

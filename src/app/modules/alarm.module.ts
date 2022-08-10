@@ -6,7 +6,7 @@ import { AlarmComponent } from 'src/app/components/alarm/alarm.component';
 
 @NgModule({
   declarations: [
-    AlarmComponent
+    AlarmComponent,
   ],
   imports: [
     CommonModule,
