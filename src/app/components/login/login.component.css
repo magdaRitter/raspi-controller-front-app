@@ -1,0 +1,11 @@
+.custom-img {
+    height: auto;
+    max-height: 50px;
+}
+
+.custom-btn {
+    outline: none;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+  }

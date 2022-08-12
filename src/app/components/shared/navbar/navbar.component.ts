@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,16 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  appTitleLbl: string = "Raspi Controller";
-  doorsLbl: string = "Doors";
-  radioLbl: string = "Radio";
-  alarmLbl: string = "Alarm";
-  systemLbl: string = "System";
-  logoUrl: string = "assets/raspi.png";
+  userLbl = "Hi, ";
+  doorsLbl = "Doors";
+  radioLbl = "Radio";
+  alarmLbl= "Alarm";
+  systemLbl = "System";
+  logoUrl= "assets/raspi.png";
+  logoutIcon = "assets/logout.png";
   
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    this.authService.getUserDetails().subscribe({
+      next: data => {
+        this.userLbl += data.name;
+      } 
+    });
   }
 
+  logout()
+  {
+    this.authService.logout().subscribe(() => this.router.navigate(['/login']), err => { console.log(err) });
+  }
 }

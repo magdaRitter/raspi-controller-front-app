@@ -2,25 +2,27 @@
     <div class="container">
       <a class="navbar-brand fw-light" href="#">
         <img src={{logoUrl}} class="d-inline-block img" alt="">
-        {{appTitleLbl}}</a>
+        {{userLbl}}</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item active">
-            <a class="nav-link fw-light" routerLinkActive='active' routerLink='/doors'>{{doorsLbl}}</a>
+            <a class="nav-link fw-light" routerLinkActive='active' routerLink='/dashboard/doors'>{{doorsLbl}}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fw-light" routerLinkActive='active' routerLink='/radio'>{{radioLbl}}</a>
+            <a class="nav-link fw-light" routerLinkActive='active' routerLink='/dashboard/radio'>{{radioLbl}}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fw-light" routerLinkActive='active' routerLink='/alarm'>{{alarmLbl}}</a>
+            <a class="nav-link fw-light" routerLinkActive='active' routerLink='/dashboard/alarm'>{{alarmLbl}}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fw-light" routerLinkActive='active' routerLink='/system'>{{systemLbl}}</a>
+            <a class="nav-link fw-light" routerLinkActive='active' routerLink='/dashboard/system'>{{systemLbl}}</a>
           </li>
         </ul>
+        <button type="button" class="btn btn-outline-primary custom-btn"><img src={{logoutIcon}} class="logout-img" alt="" (click)="logout()"></button>
       </div>
+
     </div>
   </nav>
