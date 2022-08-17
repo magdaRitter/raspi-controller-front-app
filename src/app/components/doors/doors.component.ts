@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RaspiService } from 'src/app/services/raspi/raspi.service';
+import { DoorsService } from 'src/app/services/raspi/doors.service';
 
 @Component({
   selector: 'app-doors',
@@ -12,25 +12,20 @@ export class DoorsComponent implements OnInit {
   gateIcon = "assets/doors/gate.png";
   allIcon = "assets/doors/all.png";
 
-  constructor(private raspiService: RaspiService) { }
+  constructor(private doorsService: DoorsService) { }
 
   ngOnInit(): void {
   }
 
   requestGarage() {
-    this.raspiService.requestGarage();
+    this.doorsService.requestGarage();
   }
 
   requestGate() {
-    this.raspiService.requestGate();
+    this.doorsService.requestGate();
   }
 
   requestBoth() {
-    this.raspiService.requestBoth();
+    this.doorsService.requestBoth();
   }
-
-  openBoth() {
-
-  }
-
 }

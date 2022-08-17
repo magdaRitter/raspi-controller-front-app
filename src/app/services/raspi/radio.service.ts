@@ -1,12 +1,12 @@
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http'
-import { catchError, map, Observable, tap, throwError } from "rxjs";
+import { Observable, tap, catchError, map, throwError } from 'rxjs';
 import { IStation } from './station';
 
 @Injectable({
   providedIn: 'root'
 })
-export class StationsService {
+export class RadioService {
   private stationsUrl = 'api/radio/stations.json';
 
   constructor(private http: HttpClient) { }
@@ -23,6 +23,18 @@ export class StationsService {
       .pipe(
         map((stations: IStation[]) => stations.find(s => s.id === id))
       );
+  }
+
+  startRadio(station: IStation) {
+    console.log("TODO: Sending start request for: " + station.name);
+  }
+
+  stopRadio() {
+    console.log("TODO: Sending stop request");
+  }
+
+  setVolume(volumeValue: number) {
+    console.log("TODO: Sending set volume request");
   }
 
   private handleError(err: HttpErrorResponse) {

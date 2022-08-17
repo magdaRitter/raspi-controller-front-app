@@ -1,8 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { RaspiService } from 'src/app/services/raspi/raspi.service';
-import { IStation } from 'src/app/services/stations/station';
-import { StationsService } from 'src/app/services/stations/stations.service';
+import { RadioService } from 'src/app/services/raspi/radio.service';
+import { IStation } from 'src/app/services/raspi/station';
 
 @Component({
   selector: 'app-radio',
@@ -19,10 +18,10 @@ export class RadioComponent implements OnInit, OnDestroy {
   stopped = true;
   volumeValue = 0;
 
-  constructor(private stationsService: StationsService, private raspiService: RaspiService) { }
+  constructor(private radioService: RadioService) { }
 
   ngOnInit(): void {
-    this.sub = this.stationsService.getStations().subscribe({
+    this.sub = this.radioService.getStations().subscribe({
       next: stations => {
         this.stations = stations;
         this.activeStation = stations[0]!;
@@ -40,15 +39,15 @@ export class RadioComponent implements OnInit, OnDestroy {
   }
 
   startRadio() {
-    this.raspiService.startRadio(this.activeStation);
+    this.radioService.startRadio(this.activeStation);
   }
 
   stopRadio() {
-    this.raspiService.stopRadio();
+    this.radioService.stopRadio();
   }
 
-  updateVolume(value: string){
+  updateVolume(value: string) {
     this.volumeValue = Number(value);
-    this.raspiService.setVolume(this.volumeValue);
+    this.radioService.setVolume(this.volumeValue);
   }
 }

@@ -17,7 +17,6 @@ export class LoginComponent implements OnInit {
   constructor(private serv: AuthService, private router: Router) { }
 
   ngOnInit() {
-    console.log("login on init");
     this.serv.getAuthPage().subscribe({
       next: data => {
         this.authUrl = data.authUrl;
@@ -26,7 +25,6 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log("loggin in, this.AuthUrlData = " + this.authUrl)
     this.router.navigate(['/authorize'], { queryParams: { url: this.authUrl } });
   }
 }

@@ -15,10 +15,9 @@ export class AuthService {
 
   getAuthPage(): Observable<IAuthUrl> {
     return this.http.get<IAuthUrl>(environment.baseUrl + '/authPage').pipe(
-      tap(data => 
-        {
-          console.log("Received auth page : " + data);
-        }),
+      tap(data => {
+        console.log("Received auth page : " + data);
+      }),
       catchError(this.handleError)
     );
   }
@@ -41,20 +40,20 @@ export class AuthService {
     return this.http.get(environment.baseUrl + '/logout');
   }
 
-  isLoggedIn(){
+  isLoggedIn() {
     return this._isLoggedIn;
   }
 
   private handleError(err: HttpErrorResponse) {
     let errorMessage = '';
 
-    if(err.error instanceof ErrorEvent){
-        errorMessage = 'An error occurred: ' + err.error.message;
+    if (err.error instanceof ErrorEvent) {
+      errorMessage = 'An error occurred: ' + err.error.message;
     } else {
-        errorMessage = 'Server returner code: ' + err.status + ', error message is: ' + err.message;
+      errorMessage = 'Server returner code: ' + err.status + ', error message is: ' + err.message;
     }
-    
+
     console.log(errorMessage);
     return throwError(() => errorMessage);
-}
+  }
 }

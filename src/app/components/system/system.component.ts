@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RaspiService } from 'src/app/services/raspi/raspi.service';
+import { SystemService } from 'src/app/services/raspi/system.service';
 
 @Component({
   selector: 'app-system',
@@ -11,16 +11,16 @@ export class SystemComponent implements OnInit {
   restartIcon = "assets/system/restart.png";
   shutdownIcon = "assets/system/shutdown.png";
 
-  constructor(private raspiService: RaspiService) { }
+  constructor(private systemService: SystemService) { }
 
   ngOnInit(): void {
   }
 
-  restartSystem(){
-    this.raspiService.restartSystem();
+  restartSystem() {
+    this.systemService.restartSystem();
   }
 
-  shutdownSystem(){
-    this.raspiService.shutdownSystem();
+  shutdownSystem() {
+    this.systemService.shutdownSystem();
   }
 }

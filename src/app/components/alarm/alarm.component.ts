@@ -1,8 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { IAlarm } from 'src/app/services/alarm/alarm';
-import { AlarmService } from 'src/app/services/alarm/alarm.service';
-import { RaspiService } from 'src/app/services/raspi/raspi.service';
+import { IAlarm } from 'src/app/services/raspi/alarm';
+import { AlarmService } from 'src/app/services/raspi/alarm.service';
 
 @Component({
   selector: 'app-alarm',
@@ -14,7 +13,7 @@ export class AlarmComponent implements OnInit, OnDestroy {
   errorMessage: string = "";
   alarms: IAlarm[] = [];
 
-  constructor(private alarmService: AlarmService, private raspiService: RaspiService) { }
+  constructor(private alarmService: AlarmService) { }
 
   ngOnInit(): void {
     this.sub = this.alarmService.getAlarms().subscribe({
@@ -30,14 +29,14 @@ export class AlarmComponent implements OnInit, OnDestroy {
   }
 
   addAlarm(alarm: IAlarm) {
-    console.log("Sending add alarm request");
+    this.alarmService.addAlarm(alarm);
   }
 
   editAlarm(alarm: IAlarm) {
-    console.log("Sending edit alarm request");
+    this.alarmService.editAlarm(alarm);
   }
 
   deleteAlarm(alarmId: number) {
-    console.log("Sending delete alarm request");
+    this.alarmService.deleteAlarm(alarmId);
   }
 }

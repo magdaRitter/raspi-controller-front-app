@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "radio-remote-front-app": {
+    "raspi-controller-front-app": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/radio-remote-front-app",
+            "outputPath": "dist/raspi-controller-front-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -67,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "radio-remote-front-app:build:production"
+              "browserTarget": "raspi-controller-front-app:build:production"
             },
             "development": {
-              "browserTarget": "radio-remote-front-app:build:development"
+              "browserTarget": "raspi-controller-front-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "radio-remote-front-app:build"
+            "browserTarget": "raspi-controller-front-app:build"
           }
         },
         "test": {

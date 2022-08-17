@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/radio-remote-front-app'),
+      dir: require('path').join(__dirname, './coverage/raspi-controller-front-app'),
       subdir: '.',
       reporters: [
         { type: 'html' },

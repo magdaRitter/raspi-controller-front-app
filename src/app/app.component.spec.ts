@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'radio-remote-front-app'`, () => {
+  it(`should have as title 'raspi-controller-front-app'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('radio-remote-front-app');
+    expect(app.title).toEqual('raspi-controller-front-app');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('radio-remote-front-app app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('raspi-controller-front-app app is running!');
   });
 });

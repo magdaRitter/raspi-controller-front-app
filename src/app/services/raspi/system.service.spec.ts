@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RaspiService } from './raspi.service';
+import { SystemService } from './system.service';
 
-describe('RaspiService', () => {
-  let service: RaspiService;
+describe('SystemService', () => {
+  let service: SystemService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(RaspiService);
+    service = TestBed.inject(SystemService);
   });
 
   it('should be created', () => {

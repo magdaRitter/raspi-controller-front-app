@@ -25,6 +25,18 @@ export class AlarmService {
       );
   }
 
+  addAlarm(alarm: IAlarm) {
+    console.log("TODO: Sending add alarm request");
+  }
+
+  editAlarm(alarm: IAlarm) {
+    console.log("TODO: Sending edit alarm request");
+  }
+
+  deleteAlarm(alarmId: number) {
+    console.log("TODO: Sending delete alarm request");
+  }
+
   private handleError(err: HttpErrorResponse) {
     let errorMessage = '';
 
