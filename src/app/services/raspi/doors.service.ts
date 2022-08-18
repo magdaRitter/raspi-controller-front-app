@@ -1,36 +1,37 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { ToastService } from '../toast/toast.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DoorsService {
+  private _doorsUrl = environment.baseUrl + '/doors';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private toastService: ToastService) { }
 
   requestGarage() {
-    return this.http.get(environment.baseUrl + '/garage').subscribe(
+    return this.http.get(this._doorsUrl + '/garage').subscribe(
       {
-        next: data => console.log("Request to open garage fired"),
-        error: err => catchError(this.handleError)
+        next: data => this.toastService.showSuccessToast("Garage signal was fired"),
+        error: err => this.handleError(err)
       });
   }
 
   requestGate() {
-    return this.http.get(environment.baseUrl + '/gate').subscribe(
+    return this.http.get(this._doorsUrl + '/gate').subscribe(
       {
-        next: data => console.log("Request to open gate fired"),
-        error: err => catchError(this.handleError)
+        next: data => this.toastService.showSuccessToast("Gate signal was fired"),
+        error: err => this.handleError(err)
       });
   }
 
   requestBoth() {
-    return this.http.get(environment.baseUrl + '/both').subscribe(
+    return this.http.get(this._doorsUrl + '/both').subscribe(
       {
-        next: data => console.log("Request to open both fired"),
-        error: err => catchError(this.handleError)
+        next: data => this.toastService.showSuccessToast("Both signals were fired"),
+        error: err => this.handleError(err)
       });
   }
 
@@ -43,7 +44,6 @@ export class DoorsService {
       errorMessage = 'Server returner code: ' + err.status + ', error message is: ' + err.message;
     }
 
-    console.log(errorMessage);
-    return throwError(() => errorMessage);
+    this.toastService.showErrorToast( errorMessage);
   }
 }

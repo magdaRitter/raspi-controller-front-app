@@ -10,11 +10,12 @@ import { IUser } from './user';
 })
 export class AuthService {
   private _isLoggedIn = false;
+  private _authUrl = environment.baseUrl + '/auth';
 
   constructor(private http: HttpClient) { }
 
   getAuthPage(): Observable<IAuthUrl> {
-    return this.http.get<IAuthUrl>(environment.baseUrl + '/authPage').pipe(
+    return this.http.get<IAuthUrl>(this._authUrl + '/authPage').pipe(
       tap(data => {
         console.log("Received auth page : " + data);
       }),
@@ -25,11 +26,11 @@ export class AuthService {
   getAcessToken(auth_code: string) {
     this._isLoggedIn = true;
 
-    return this.http.post(environment.baseUrl + '/accessToken', { code: auth_code });
+    return this.http.post(this._authUrl + '/accessToken', { code: auth_code });
   }
 
   getUserDetails(): Observable<IUser> {
-    return this.http.get<IUser>(environment.baseUrl + '/userDetails').pipe(
+    return this.http.get<IUser>(this._authUrl + '/userDetails').pipe(
       catchError(this.handleError)
     );
   }
@@ -37,7 +38,7 @@ export class AuthService {
   logout() {
     this._isLoggedIn = false;
 
-    return this.http.get(environment.baseUrl + '/logout');
+    return this.http.get(this._authUrl + '/logout');
   }
 
   isLoggedIn() {

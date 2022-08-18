@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DoorsService } from 'src/app/services/raspi/doors.service';
+import { ToastService } from 'src/app/services/toast/toast.service';
 
 @Component({
   selector: 'app-doors',
