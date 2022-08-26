@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   baseUrl: '/raspi',
+  apiHost: 'https://api.serniczek.ml',
 };
 
 /*

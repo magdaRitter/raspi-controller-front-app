@@ -10,7 +10,7 @@ import { IUser } from './user';
 })
 export class AuthService {
   private _isLoggedIn = false;
-  private _authUrl = environment.baseUrl + '/auth';
+  private _authUrl = environment.apiHost + environment.baseUrl + '/auth';
 
   constructor(private http: HttpClient) { }
 

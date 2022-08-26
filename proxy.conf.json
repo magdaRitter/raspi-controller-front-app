@@ -1,6 +1,6 @@
 {
     "/raspi/*": {
-        "target": "http://localhost:5000",
+        "target": "http://raspiControllerProxyServer:5000",
         "secure": false,
         "logLevel": "debug",
         "changeOrigin": true

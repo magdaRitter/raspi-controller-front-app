@@ -7,7 +7,7 @@ import { ToastService } from '../toast/toast.service';
   providedIn: 'root'
 })
 export class DoorsService {
-  private _doorsUrl = environment.baseUrl + '/doors';
+  private _doorsUrl = environment.apiHost + environment.baseUrl + '/doors';
 
   constructor(private http: HttpClient, private toastService: ToastService) { }
 
