@@ -1,6 +1,6 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, tap, throwError } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IAuthUrl } from './auth-url';
 import { IUser } from './user';
@@ -9,24 +9,40 @@ import { IUser } from './user';
   providedIn: 'root'
 })
 export class AuthService {
-  private _isLoggedIn = false;
   private _authUrl = environment.apiHost + environment.baseUrl + '/auth';
 
   constructor(private http: HttpClient) { }
 
+  public isAuthenticated(): boolean {
+    const token = this.getToken();
+
+    return (token !== null && token !== undefined);
+  }
+
+  public getToken() {
+    return localStorage.getItem('token');
+  }
+
   getAuthPage(): Observable<IAuthUrl> {
     return this.http.get<IAuthUrl>(this._authUrl + '/authPage').pipe(
-      tap(data => {
-        console.log("Received auth page : " + data);
-      }),
       catchError(this.handleError)
     );
   }
 
   getAcessToken(auth_code: string) {
-    this._isLoggedIn = true;
+    console.log(auth_code)
 
-    return this.http.post(this._authUrl + '/accessToken', { code: auth_code });
+    interface ProxyResponse {
+      access_token: string;
+    }
+  
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    };
+    
+    return this.http.post<ProxyResponse>(this._authUrl + '/accessToken', {code: auth_code}, httpOptions).pipe(map((response: ProxyResponse) => {
+      localStorage.setItem('token', response.access_token);
+    }));
   }
 
   getUserDetails(): Observable<IUser> {
@@ -36,13 +52,9 @@ export class AuthService {
   }
 
   logout() {
-    this._isLoggedIn = false;
+    localStorage.removeItem('token');
 
     return this.http.get(this._authUrl + '/logout');
-  }
-
-  isLoggedIn() {
-    return this._isLoggedIn;
   }
 
   private handleError(err: HttpErrorResponse) {

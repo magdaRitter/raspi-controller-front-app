@@ -1,6 +1,8 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap, catchError, map, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { ToastService } from '../toast/toast.service';
 import { IStation } from './station';
 
 @Injectable({
@@ -8,8 +10,9 @@ import { IStation } from './station';
 })
 export class RadioService {
   private stationsUrl = 'api/radio/stations.json';
+  private _radioUrl = environment.apiHost + environment.baseUrl + '/radio';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private toastService: ToastService) { }
 
   getStations(): Observable<IStation[]> {
     return this.http.get<IStation[]>(this.stationsUrl).pipe(
@@ -26,15 +29,37 @@ export class RadioService {
   }
 
   startRadio(station: IStation) {
-    console.log("TODO: Sending start request for: " + station.name);
+    let params = { "name": station.name, "stream_url": station.streamUrl };
+    let queryParams = new HttpParams({ fromObject: params });
+    const url = this._radioUrl + "/start";
+
+    return this.http.get(url, { params: queryParams }).subscribe(
+      {
+        next: data => this.toastService.showSuccessToast("Radio start signal was fired for station: " + station.name),
+        error: err => this.handleError(err)
+      });
   }
 
   stopRadio() {
-    console.log("TODO: Sending stop request");
+    const url = this._radioUrl + "/stop";
+
+    return this.http.get(url).subscribe(
+      {
+        next: data => this.toastService.showSuccessToast("Radio stop signal was fired"),
+        error: err => this.handleError(err)
+      });
   }
 
   setVolume(volumeValue: number) {
-    console.log("TODO: Sending set volume request");
+    let params = { "volume": volumeValue };
+    let queryParams = new HttpParams({ fromObject: params });
+    const url = this._radioUrl + "/volume";
+
+    return this.http.get(url, { params: queryParams }).subscribe(
+      {
+        next: data => this.toastService.showSuccessToast("Radio volume signal was fired for value: " + volumeValue),
+        error: err => this.handleError(err)
+      });
   }
 
   private handleError(err: HttpErrorResponse) {
